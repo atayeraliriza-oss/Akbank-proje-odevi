@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krediler - Akbank</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="top-warning">
+        Bu site Web Tasarım dersi kapsamında yapılmıştır ve sitedeki bilgilerin geçerliliği yoktur.
+    </div>
+
+    <header>
+        <div class="header-left">
+            <div class="logo">AKBANK</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="krediler.html">Krediler</a></li>
+                    <li><a href="kredi-kartlari.html">Kredi Kartları</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="header-right">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Arama yapın...">
+                <button type="button" id="searchBtn">Ara</button>
+            </div>
+            <div id="authButtons" style="display: flex; gap: 10px;">
+                <a href="#" class="auth-btn login-btn">Giriş Yap</a>
+                <a href="#" class="auth-btn register-btn">Üye Ol</a>
+            </div>
+            <div id="userProfile" style="display: none; align-items: center; gap: 15px;">
+                <span style="color: var(--akbank-red); font-weight: 500;" id="userDisplayName"></span>
+                <button id="logoutBtn" class="auth-btn" style="background: #E30A17; border-color: #E30A17; cursor: pointer; color: white;">Çıkış</button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hayalleriniz İçin Finansal Destek</h1>
+            <p>Esnek ödeme planları, rekabetçi faiz oranları ve tamamen dijital, anında onaylanan kredi seçeneklerimizle finansal ihtiyaçlarınızı ertelemeyin.</p>
+        </div>
+    </section>
+
+    <section style="padding: 40px 20px; max-width: 1000px; margin: -60px auto 40px auto; position: relative; z-index: 10;">
+        <div style="background: var(--white); padding: 40px; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+            <h2 style="color: var(--akbank-dark); margin-bottom: 25px; font-size: 24px; text-align: center;">Hızlı Kredi Hesaplama</h2>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+                <div style="flex: 1; min-width: 200px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--akbank-gray); font-size: 14px;">Kredi Türü</label>
+                    <select id="krediTuru" style="width: 100%; padding: 15px; border: 1px solid #CCC; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 15px; outline: none;">
+                        <option value="ihtiyac">İhtiyaç Kredisi</option>
+                        <option value="tasit">Taşıt Kredisi</option>
+                        <option value="konut">Konut Kredisi</option>
+                    </select>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--akbank-gray); font-size: 14px;">Kredi Tutarı (TL)</label>
+                    <input type="number" id="krediTutari" placeholder="Örn: 50000" style="width: 100%; padding: 15px; border: 1px solid #CCC; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 15px; outline: none;">
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--akbank-gray); font-size: 14px;">Vade (Ay)</label>
+                    <select id="krediVadesi" style="width: 100%; padding: 15px; border: 1px solid #CCC; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 15px; outline: none;">
+                        <option value="12">12 Ay</option>
+                        <option value="24">24 Ay</option>
+                        <option value="36" selected>36 Ay</option>
+                        <option value="48">48 Ay</option>
+                        <option value="60">60 Ay</option>
+                        <option value="120">120 Ay</option>
+                    </select>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <button type="button" id="hesaplaBtn" class="btn" style="background: var(--akbank-red); color: var(--white); border: none; padding: 15px 40px; font-size: 16px;">Hesapla</button>
+            </div>
+            
+            <div id="hesapSonuc" style="display: none; margin-top: 30px; padding: 25px; background: #F9FAFC; border-radius: 12px; border-left: 5px solid var(--akbank-red); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center;">
+                    <div>
+                        <span style="font-size: 14px; color: var(--akbank-gray); font-weight: 600;">Aylık Taksit</span><br>
+                        <strong style="font-size: 24px; color: var(--akbank-red);" id="sonucTaksit">0 TL</strong>
+                    </div>
+                    <div>
+                        <span style="font-size: 14px; color: var(--akbank-gray); font-weight: 600;">Faiz Oranı</span><br>
+                        <strong style="font-size: 20px; color: var(--akbank-dark);" id="sonucFaiz">%0</strong>
+                    </div>
+                    <div>
+                        <span style="font-size: 14px; color: var(--akbank-gray); font-weight: 600;">Toplam Geri Ödeme</span><br>
+                        <strong style="font-size: 20px; color: var(--akbank-dark);" id="sonucToplam">0 TL</strong>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 25px;">
+                    <button class="btn" style="padding: 10px 30px; font-size: 14px;">Hemen Başvur</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="services" style="padding-top: 20px;">
+        <h2>En Çok Tercih Edilen Kredilerimiz</h2>
+        <p class="subtitle">İhtiyacınıza göre özelleştirilebilen temel kredi çözümlerimizi inceleyin.</p>
+        <div class="service-cards">
+            <div class="card" id="ihtiyac-kredisi">
+                <h3>İhtiyaç Kredisi</h3>
+                <p>Eğitim, sağlık, evlilik veya tatil planlarınız için 36 aya varan vade seçenekleri ve bütçenizi yormayacak esnek taksit imkanlarıyla anında hesabınızda.</p>
+            </div>
+            <div class="card">
+                <h3>Taşıt Kredisi</h3>
+                <p>Hayalinizdeki sıfır kilometre veya ikinci el araca sahip olmak için, markaya özel avantajlı faiz oranları ve 48 ay vade imkanıyla hemen başvurun.</p>
+            </div>
+            <div class="card">
+                <h3>Konut Kredisi</h3>
+                <p>120 aya varan uzun vadeler, sabit faiz güvencesi ve kişiye özel gelir durumuna uygun geri ödeme planlarıyla ev sahibi olmanın tam zamanı.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 60px 20px; background: var(--akbank-dark); color: var(--white);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h3 style="text-align: center; margin-bottom: 40px; font-size: 28px; color: var(--white);">Neden Akbank Kredisi?</h3>
+            <div style="display: flex; gap: 30px; justify-content: space-around; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px; text-align: center; padding: 20px;">
+                    <div style="font-size: 40px; margin-bottom: 15px;">⏱️</div>
+                    <h4 style="color: var(--akbank-red); margin-bottom: 10px; font-size: 18px;">Anında Onay</h4>
+                    <p style="color: #ccc; font-size: 14px; line-height: 1.6;">Yapay zeka destekli altyapımızla başvurunuz saniyeler içinde sonuçlanır ve tutar anında hesabınıza geçer.</p>
+                </div>
+                <div style="flex: 1; min-width: 250px; text-align: center; padding: 20px;">
+                    <div style="font-size: 40px; margin-bottom: 15px;">📄</div>
+                    <h4 style="color: var(--akbank-red); margin-bottom: 10px; font-size: 18px;">Belgesiz & Kefilsiz</h4>
+                    <p style="color: #ccc; font-size: 14px; line-height: 1.6;">Şubeye gitmeden, evrak karmaşasıyla uğraşmadan tamamen dijital ortamda kredinizi kullanabilirsiniz.</p>
+                </div>
+                <div style="flex: 1; min-width: 250px; text-align: center; padding: 20px;">
+                    <div style="font-size: 40px; margin-bottom: 15px;">⚙️</div>
+                    <h4 style="color: var(--akbank-red); margin-bottom: 10px; font-size: 18px;">Esnek Ödeme Planı</h4>
+                    <p style="color: #ccc; font-size: 14px; line-height: 1.6;">3 ay ertelemeli, artan ya da azalan taksit seçenekleriyle gelirinize en uygun ödeme modelini siz belirleyin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+        <h3 style="text-align: center; margin-bottom: 40px; font-size: 24px; color: var(--akbank-dark);">Diğer Kredi ve Finansman Çözümlerimiz</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+            <div style="background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid var(--akbank-red); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <h4 style="color: var(--akbank-dark); margin-bottom: 8px; font-size: 16px;">Eğitim Kredisi</h4>
+                <p style="color: var(--akbank-gray); font-size: 13px; line-height: 1.5;">Okul, üniversite ve kurs masraflarınız için düşük faizli destek.</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid var(--akbank-red); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <h4 style="color: var(--akbank-dark); margin-bottom: 8px; font-size: 16px;">Evlilik Kredisi</h4>
+                <p style="color: var(--akbank-gray); font-size: 13px; line-height: 1.5;">Düğün, çeyiz ve balayı harcamalarınız için özel vadeli çözümler.</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid var(--akbank-red); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <h4 style="color: var(--akbank-dark); margin-bottom: 8px; font-size: 16px;">Bedelli Askerlik Kredisi</h4>
+                <p style="color: var(--akbank-gray); font-size: 13px; line-height: 1.5;">Askerlik ödemelerinizi anında gerçekleştirip taksitle geri ödeyin.</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid var(--akbank-red); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <h4 style="color: var(--akbank-dark); margin-bottom: 8px; font-size: 16px;">Doğa Dostu Kredi</h4>
+                <p style="color: var(--akbank-gray); font-size: 13px; line-height: 1.5;">Güneş paneli veya yalıtım harcamalarınız için çevreci finansman.</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid var(--akbank-red); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <h4 style="color: var(--akbank-dark); margin-bottom: 8px; font-size: 16px;">Artı Para (KMH)</h4>
+                <p style="color: var(--akbank-gray); font-size: 13px; line-height: 1.5;">Hesabınızda para kalmasa bile acil nakit ihtiyaçlarınız için her an hazır.</p>
+            </div>
+            <div style="background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid var(--akbank-red); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <h4 style="color: var(--akbank-dark); margin-bottom: 8px; font-size: 16px;">Borç Transferi Kredisi</h4>
+                <p style="color: var(--akbank-gray); font-size: 13px; line-height: 1.5;">Diğer bankalardaki tüm borçlarınızı tek bir çatıda, uygun faizle birleştirin.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 40px 20px; max-width: 1200px; margin: 0 auto 60px auto; background: #fff; border-radius: 12px; box-shadow: var(--shadow);">
+        <h3 style="text-align: center; margin-bottom: 40px; color: var(--akbank-dark); font-size: 24px;">Sıkça Sorulan Sorular</h3>
+        <div style="display: flex; flex-direction: column; gap: 15px; max-width: 900px; margin: 0 auto;">
+            <div style="background: #F9FAFC; padding: 20px; border-radius: 8px; border-left: 3px solid var(--akbank-red);">
+                <h4 style="color: var(--akbank-dark); margin-bottom: 8px; font-size: 16px;">Kredi başvurum ne zaman sonuçlanır?</h4>
+                <p style="color: var(--akbank-gray); font-size: 14px; line-height: 1.6;">Dijital kanallardan yaptığınız ihtiyaç kredisi başvurularınız genellikle saniyeler içerisinde değerlendirilir ve onay durumunda hemen hesabınıza aktarılır.</p>
+            </div>
+            <div style="background: #F9FAFC; padding: 20px; border-radius: 8px; border-left: 3px solid var(--akbank-red);">
+                <h4 style="color: var(--akbank-dark); margin-bottom: 8px; font-size: 16px;">Mevcut kredimi erken kapatırsam indirim olur mu?</h4>
+                <p style="color: var(--akbank-gray); font-size: 14px; line-height: 1.6;">Evet, taksit vadesi gelmeden yapılan erken ödemelerde veya kredinin tamamının kapatılması durumunda faiz indirimi uygulanmaktadır.</p>
+            </div>
+            <div style="background: #F9FAFC; padding: 20px; border-radius: 8px; border-left: 3px solid var(--akbank-red);">
+                <h4 style="color: var(--akbank-dark); margin-bottom: 8px; font-size: 16px;">Kredi çekmek için Akbank müşterisi olmam şart mı?</h4>
+                <p style="color: var(--akbank-gray); font-size: 14px; line-height: 1.6;">Başvuru aşamasında müşteri olmanız şart değildir. Ancak onaylanan kredinizi kullanabilmeniz için Akbank vadesiz hesabınızın bulunması gerekmektedir.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>AKBANK</h4>
+                <p>Türkiye'nin öncü ve en yenilikçi kurumsal bankası.</p>
+            </div>
+            <div class="footer-col">
+                <h4>HIZLI LİNKLER</h4>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>İLETİŞİM</h4>
+                <p>📞 444 25 25</p>
+                <p>✉️ iletisim@akbank.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Akbank. Tüm hakları saklıdır.
+        </div>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeLogin">&times;</span>
+            <h2 style="color: var(--akbank-red); margin-bottom: 20px;">Akbank'a Giriş</h2>
+            <form id="loginForm" class="modal-form">
+                <div class="form-group">                    <label>Ad Soyad</label>
+                    <input type="text" id="loginName" required placeholder="Adınız Soyadınız">
+                </div>
+                <div class="form-group">                    <label>T.C. Kimlik No</label>
+                    <input type="text" id="loginId" required placeholder="11 Haneli Kimlik Numaranız">
+                </div>
+                <div class="form-group">
+                    <label>Akbank Şifresi</label>
+                    <input type="password" id="loginPass" required placeholder="Şifreniz">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Güvenli Giriş</button>
+                <p id="loginFeedback" class="feedback-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeRegister">&times;</span>
+            <h2 style="color: var(--akbank-red); margin-bottom: 20px;">Akbanklı Ol</h2>
+            <form id="registerForm" class="modal-form">
+                <div class="form-group">
+                    <label>Ad Soyad</label>
+                    <input type="text" id="regName" required placeholder="Adınız Soyadınız">
+                </div>
+                <div class="form-group">
+                    <label>T.C. Kimlik No</label>
+                    <input type="text" id="regTc" required placeholder="11 Haneli TCKN">
+                </div>
+                <div class="form-group">
+                    <label>Cep Telefonu</label>
+                    <input type="tel" id="regPhone" required placeholder="05XX XXX XX XX">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Hemen Başvur</button>
+                <p id="regFeedback" class="feedback-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById('hesaplaBtn').addEventListener('click', function() {
+            const tur = document.getElementById('krediTuru').value;
+            const tutar = parseFloat(document.getElementById('krediTutari').value);
+            const vade = parseInt(document.getElementById('krediVadesi').value);
+            const sonucDiv = document.getElementById('hesapSonuc');
+
+            if (!tutar || tutar <= 0) {
+                alert("Lütfen geçerli bir kredi tutarı giriniz.");
+                return;
+            }
+
+            let faizOrani = 0;
+            if (tur === 'ihtiyac') faizOrani = 3.50;
+            else if (tur === 'tasit') faizOrani = 2.99;
+            else if (tur === 'konut') faizOrani = 2.80;
+
+            const r = faizOrani / 100;
+            const aylikTaksit = (tutar * r * Math.pow(1 + r, vade)) / (Math.pow(1 + r, vade) - 1);
+            const toplamOdeme = aylikTaksit * vade;
+
+            document.getElementById('sonucTaksit').textContent = aylikTaksit.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' TL';
+            document.getElementById('sonucFaiz').textContent = '%' + faizOrani.toFixed(2);
+            document.getElementById('sonucToplam').textContent = toplamOdeme.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' TL';
+
+            sonucDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

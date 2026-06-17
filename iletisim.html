@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Akbank</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="top-warning">
+        Bu site Web Tasarım dersi kapsamında yapılmıştır ve sitedeki bilgilerin geçerliliği yoktur.
+    </div>
+
+    <header>
+        <div class="header-left">
+            <div class="logo">AKBANK</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="krediler.html">Krediler</a></li>
+                    <li><a href="kredi-kartlari.html">Kredi Kartları</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Arama yapın...">
+                <button type="button" id="searchBtn">Ara</button>
+            </div>
+            <div id="authButtons" style="display: flex; gap: 10px;">
+                <a href="#" class="auth-btn login-btn">Giriş Yap</a>
+                <a href="#" class="auth-btn register-btn">Üye Ol</a>
+            </div>
+            <div id="userProfile" style="display: none; align-items: center; gap: 15px;">
+                <span style="color: var(--akbank-red); font-weight: 500;" id="userDisplayName"></span>
+                <button id="logoutBtn" class="auth-btn" style="background: #E30A17; border-color: #E30A17; cursor: pointer; color: white;">Çıkış</button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bizimle İletişime Geçin</h1>
+            <p>Sorularınız, önerileriniz veya destek talepleriniz için formu doldurabilir ya da iletişim kanallarımızdan bize anında ulaşabilirsiniz.</p>
+        </div>
+    </section>
+
+    <section style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px;">
+            <div style="background: #fff; padding: 25px; border-radius: 12px; text-align: center; box-shadow: var(--shadow); border-top: 4px solid var(--akbank-red);">
+                <div style="font-size: 32px; margin-bottom: 10px;">📞</div>
+                <h4 style="color: var(--akbank-dark); margin-bottom: 5px;">Telefon Şubesi</h4>
+                <p style="color: var(--akbank-gray); font-size: 14px; font-weight: bold;">444 25 25</p>
+                <p style="color: var(--akbank-gray); font-size: 12px; margin-top: 5px;">7/24 Kesintisiz Hizmet</p>
+            </div>
+            <div style="background: #fff; padding: 25px; border-radius: 12px; text-align: center; box-shadow: var(--shadow); border-top: 4px solid #25D366;">
+                <div style="font-size: 32px; margin-bottom: 10px;">💬</div>
+                <h4 style="color: var(--akbank-dark); margin-bottom: 5px;">WhatsApp Destek</h4>
+                <p style="color: var(--akbank-gray); font-size: 14px; font-weight: bold;">0850 222 25 25</p>
+                <p style="color: var(--akbank-gray); font-size: 12px; margin-top: 5px;">Hızlı Çözümler</p>
+            </div>
+            <div style="background: #fff; padding: 25px; border-radius: 12px; text-align: center; box-shadow: var(--shadow); border-top: 4px solid var(--akbank-dark);">
+                <div style="font-size: 32px; margin-bottom: 10px;">🤖</div>
+                <h4 style="color: var(--akbank-dark); margin-bottom: 5px;">Asistan Axı</h4>
+                <p style="color: var(--akbank-gray); font-size: 13px; line-height: 1.4;">Akbank Mobil içinde yapay zeka destekli dijital asistanınız her an yanınızda.</p>
+            </div>
+            <div style="background: #fff; padding: 25px; border-radius: 12px; text-align: center; box-shadow: var(--shadow); border-top: 4px solid #0077B5;">
+                <div style="font-size: 32px; margin-bottom: 10px;">♿</div>
+                <h4 style="color: var(--akbank-dark); margin-bottom: 5px;">Engelsiz Bankacılık</h4>
+                <p style="color: var(--akbank-gray); font-size: 13px; line-height: 1.4;">Görüntülü destek formu ve işaret dili uzmanlarımızla engelleri kaldırıyoruz.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 0 20px; max-width: 1200px; margin: 0 auto 40px auto;">
+        <div style="background: #fff; padding: 35px; border-radius: 16px; box-shadow: var(--shadow);">
+            <h3 style="color: var(--akbank-dark); margin-bottom: 20px; text-align: center;">Şube ve ATM Bulucu</h3>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center;">
+                <div style="flex: 1; min-width: 200px; max-width: 300px;">
+                    <select id="sehirSecim" style="width: 100%; padding: 12px; border: 1px solid #CCC; border-radius: 8px; font-family: 'Montserrat', sans-serif; outline: none;">
+                        <option value="">İl Seçiniz</option>
+                        <option value="İstanbul">İstanbul</option>
+                        <option value="Ankara">Ankara</option>
+                        <option value="İzmir">İzmir</option>
+                        <option value="Eskişehir">Eskişehir</option>
+                        <option value="Konya">Konya</option>
+                        <option value="Antalya">Antalya</option>
+                        <option value="Bursa">Bursa</option>
+                        <option value="Adana">Adana</option>
+                    </select>
+                </div>
+                <div style="flex: 1; min-width: 200px; max-width: 300px;">
+                    <input type="text" id="ilceGiris" placeholder="İlçe veya mahalle girin..." style="width: 100%; padding: 12px; border: 1px solid #CCC; border-radius: 8px; font-family: 'Montserrat', sans-serif; outline: none;">
+                </div>
+                <button type="button" id="lokasyonBulBtn" class="btn" style="background: var(--akbank-red); color: white; border: none; padding: 12px 30px;">En Yakın Olanı Bul</button>
+            </div>
+            
+            <div id="lokasyonSonuc" style="display: none; margin-top: 30px; border-top: 1px solid #EEE; padding-top: 25px;">
+                <h4 style="color: var(--akbank-dark); margin-bottom: 15px; text-align: center;">Size En Yakın Noktalar</h4>
+                <div id="sonucListe" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="display: flex; gap: 40px; max-width: 1200px; margin: 0 auto 60px auto; padding: 0 20px; flex-wrap: wrap;">
+        <div style="flex: 1.5; min-width: 320px; background: #fff; padding: 40px; border-radius: 12px; box-shadow: var(--shadow);">
+            <h3 style="color: var(--akbank-red); margin-bottom: 20px;">İletişim Formu</h3>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Ad Soyad:</label>
+                    <input type="text" id="name" name="name" placeholder="Lütfen adınızı ve soyadınızı giriniz">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mesajınız:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea>
+                </div>
+                <button type="submit" class="btn">Mesajı Gönder</button>
+                <p id="formFeedback" class="feedback-msg"></p>
+            </form>
+        </div>
+
+        <div style="flex: 1; min-width: 280px; background: #fff; padding: 40px; border-radius: 12px; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h3 style="color: var(--akbank-dark); margin-bottom: 20px; border-bottom: 2px solid var(--akbank-red); padding-bottom: 5px;">Genel Müdürlük</h3>
+                <p style="color: var(--akbank-gray); font-size: 15px; line-height: 1.6; margin-bottom: 20px;">
+                    Akbank Genel Müdürlüğü,<br>
+                    Sabancı Center, 34330 4. Levent,<br>
+                    İstanbul / Türkiye
+                </p>
+                <h3 style="color: var(--akbank-dark); margin-bottom: 15px; font-size: 18px;">Telefon Destek Hatları</h3>
+                <p style="color: var(--akbank-gray); font-size: 14px; line-height: 1.8; margin-bottom: 20px;">
+                    <strong>Müşteri İletişim Merkezi:</strong> 444 25 25<br>
+                    <strong>Yurt Dışından Erişim:</strong> +90 216 444 25 25<br>
+                    <strong>Genel Müdürlük Tel:</strong> +90 212 385 55 55
+                </p>
+            </div>
+            <div style="background: #F5F7FA; padding: 15px; border-radius: 6px;">
+                <h4 style="margin-bottom: 5px; font-size: 14px; color: var(--akbank-dark);">Şube Çalışma Saatleri</h4>
+                <p style="color: var(--akbank-gray); font-size: 13px;">Hafta içi: 09:00 - 12:30 / 13:30 - 17:00<br>Cumartesi - Pazar: Kapalı</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>AKBANK</h4>
+                <p>Türkiye'nin öncü ve en yenilikçi kurumsal bankası.</p>
+            </div>
+            <div class="footer-col">
+                <h4>HIZLI LİNKLER</h4>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>İLETİŞİM</h4>
+                <p>📞 444 25 25</p>
+                <p>✉️ iletisim@akbank.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Akbank. Tüm hakları saklıdır.
+        </div>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeLogin">&times;</span>
+            <h2 style="color: var(--akbank-red); margin-bottom: 20px;">Akbank'a Giriş</h2>
+            <form id="loginForm" class="modal-form">
+                <div class="form-group">                    <label>Ad Soyad</label>
+                    <input type="text" id="loginName" required placeholder="Adınız Soyadınız">
+                </div>
+                <div class="form-group">                    <label>T.C. Kimlik No</label>
+                    <input type="text" id="loginId" required placeholder="11 Haneli Kimlik Numaranız">
+                </div>
+                <div class="form-group">
+                    <label>Akbank Şifresi</label>
+                    <input type="password" id="loginPass" required placeholder="Şifreniz">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Güvenli Giriş</button>
+                <p id="loginFeedback" class="feedback-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeRegister">&times;</span>
+            <h2 style="color: var(--akbank-red); margin-bottom: 20px;">Akbanklı Ol</h2>
+            <form id="registerForm" class="modal-form">
+                <div class="form-group">
+                    <label>Ad Soyad</label>
+                    <input type="text" id="regName" required placeholder="Adınız Soyadınız">
+                </div>
+                <div class="form-group">
+                    <label>T.C. Kimlik No</label>
+                    <input type="text" id="regTc" required placeholder="11 Haneli TCKN">
+                </div>
+                <div class="form-group">
+                    <label>Cep Telefonu</label>
+                    <input type="tel" id="regPhone" required placeholder="05XX XXX XX XX">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Hemen Başvur</button>
+                <p id="regFeedback" class="feedback-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        const lokasyonBulBtn = document.getElementById('lokasyonBulBtn');
+        if(lokasyonBulBtn) {
+            lokasyonBulBtn.addEventListener('click', function() {
+                const sehir = document.getElementById('sehirSecim').value;
+                const ilce = document.getElementById('ilceGiris').value.trim();
+                const sonucDiv = document.getElementById('lokasyonSonuc');
+                const sonucListe = document.getElementById('sonucListe');
+
+                if (sehir === "" || ilce === "") {
+                    alert("Lütfen il seçimi yapın ve ilçe/mahalle bilgisini girin.");
+                    return;
+                }
+
+                sonucListe.innerHTML = `
+                    <div style="flex: 1; min-width: 250px; background: #F9FAFC; padding: 20px; border-radius: 8px; border-left: 4px solid var(--akbank-red); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                        <h4 style="margin-bottom: 8px; color: var(--akbank-dark); font-size: 16px;">${ilce} Şubesi</h4>
+                        <p style="font-size: 13px; color: var(--akbank-gray); line-height: 1.5;">Merkez Cad. No: 45, ${ilce} / ${sehir}</p>
+                        <p style="font-size: 13px; color: #25D366; font-weight: bold; margin-top: 10px;">🟢 Şu an Açık (17:00'a kadar)</p>
+                    </div>
+                    <div style="flex: 1; min-width: 250px; background: #F9FAFC; padding: 20px; border-radius: 8px; border-left: 4px solid var(--akbank-dark); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                        <h4 style="margin-bottom: 8px; color: var(--akbank-dark); font-size: 16px;">${ilce} Meydan ATM</h4>
+                        <p style="font-size: 13px; color: var(--akbank-gray); line-height: 1.5;">Belediye Meydanı Yanı, ${ilce} / ${sehir}</p>
+                        <p style="font-size: 13px; color: #0077B5; font-weight: bold; margin-top: 10px;">🔵 7/24 Kesintisiz Hizmet</p>
+                        <p style="font-size: 12px; color: var(--akbank-gray); margin-top: 5px;">Para Yatırma / Çekme Aktif</p>
+                    </div>
+                `;
+                
+                sonucDiv.style.display = "block";
+            });
+        }
+    </script>
+</body>
+</html>

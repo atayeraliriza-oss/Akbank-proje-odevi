@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Transferi - Akbank</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="top-warning">
+        Bu site Web Tasarım dersi kapsamında yapılmıştır ve sitedeki bilgilerin geçerliliği yoktur.
+    </div>
+
+    <header>
+        <div class="header-left">
+            <div class="logo">AKBANK</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="krediler.html">Krediler</a></li>
+                    <li><a href="kredi-kartlari.html">Kredi Kartları</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Arama yapın...">
+                <button type="button" id="searchBtn">Ara</button>
+            </div>
+            <div id="authButtons" style="display: flex; gap: 10px;">
+                <a href="#" class="auth-btn login-btn">Giriş Yap</a>
+                <a href="#" class="auth-btn register-btn">Üye Ol</a>
+            </div>
+            <div id="userProfile" style="display: none; align-items: center; gap: 15px;">
+                <span style="color: var(--akbank-red); font-weight: 500;" id="userDisplayName"></span>
+                <button id="logoutBtn" class="auth-btn" style="background: #E30A17; border-color: #E30A17; cursor: pointer; color: white;">Çıkış</button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" style="padding: 80px 50px;">
+        <div class="hero-content">
+            <h1>Hızlı ve Güvenli Para Transferi</h1>
+            <p>7/24 EFT, Havale ve FAST işlemlerinizi güvenle saniyeler içinde tamamlayın.</p>
+        </div>
+    </section>
+
+    <section style="padding: 40px 20px; max-width: 700px; margin: -60px auto 60px auto; position: relative; z-index: 10;">
+        <div style="background: var(--white); padding: 40px; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.15);">
+            <h2 style="color: var(--akbank-dark); margin-bottom: 25px; font-size: 24px; text-align: center; border-bottom: 2px solid #F5F7FA; padding-bottom: 15px;">Transfer Bilgileri</h2>
+            
+            <form id="transferForm">
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--akbank-gray); font-size: 14px;">İşlem Tipi</label>
+                    <select required style="width: 100%; padding: 15px; border: 1px solid #CCC; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 15px; outline: none; background: #FAFAFA;">
+                        <option value="havale">Havale (Akbank Hesabına)</option>
+                        <option value="eft">EFT / FAST (Başka Banka Hesabına)</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--akbank-gray); font-size: 14px;">Alıcı Ad Soyad / Ünvan</label>
+                    <input type="text" required placeholder="Örn: Ahmet Yılmaz" style="width: 100%; padding: 15px; border: 1px solid #CCC; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 15px; outline: none;">
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--akbank-gray); font-size: 14px;">Alıcı IBAN</label>
+                    <input type="text" required placeholder="TR00 0000 0000 0000 0000 0000 00" style="width: 100%; padding: 15px; border: 1px solid #CCC; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 15px; outline: none; text-transform: uppercase;">
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--akbank-gray); font-size: 14px;">Tutar (TL)</label>
+                    <input type="number" required placeholder="0,00 TL" style="width: 100%; padding: 15px; border: 1px solid #CCC; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 15px; outline: none;">
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--akbank-gray); font-size: 14px;">Açıklama (İsteğe Bağlı)</label>
+                    <input type="text" placeholder="Kira, borç, ödeme vb." style="width: 100%; padding: 15px; border: 1px solid #CCC; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 15px; outline: none;">
+                </div>
+
+                <button type="submit" class="btn" style="background: var(--akbank-red); color: var(--white); border: none; padding: 15px; width: 100%; font-size: 16px;">Parayı Gönder</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>AKBANK</h4>
+                <p>Türkiye'nin öncü ve en yenilikçi kurumsal bankası.</p>
+            </div>
+            <div class="footer-col">
+                <h4>HIZLI LİNKLER</h4>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>İLETİŞİM</h4>
+                <p>📞 444 25 25</p>
+                <p>✉️ iletisim@akbank.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Akbank. Tüm hakları saklıdır.
+        </div>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeLogin">&times;</span>
+            <h2 style="color: var(--akbank-red); margin-bottom: 20px;">Akbank'a Giriş</h2>
+            <form id="loginForm" class="modal-form">
+                <div class="form-group">                    <label>Ad Soyad</label>
+                    <input type="text" id="loginName" required placeholder="Adınız Soyadınız">
+                </div>
+                <div class="form-group">                    <label>T.C. Kimlik No</label>
+                    <input type="text" id="loginId" required placeholder="11 Haneli Kimlik Numaranız">
+                </div>
+                <div class="form-group">
+                    <label>Akbank Şifresi</label>
+                    <input type="password" id="loginPass" required placeholder="Şifreniz">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Güvenli Giriş</button>
+                <p id="loginFeedback" class="feedback-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeRegister">&times;</span>
+            <h2 style="color: var(--akbank-red); margin-bottom: 20px;">Akbanklı Ol</h2>
+            <form id="registerForm" class="modal-form">
+                <div class="form-group">
+                    <label>Ad Soyad</label>
+                    <input type="text" id="regName" required placeholder="Adınız Soyadınız">
+                </div>
+                <div class="form-group">
+                    <label>T.C. Kimlik No</label>
+                    <input type="text" id="regTc" required placeholder="11 Haneli TCKN">
+                </div>
+                <div class="form-group">
+                    <label>Cep Telefonu</label>
+                    <input type="tel" id="regPhone" required placeholder="05XX XXX XX XX">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Hemen Başvur</button>
+                <p id="regFeedback" class="feedback-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById('transferForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Para transferi işleminiz başarıyla simüle edildi! (Bu bir Web Tasarım Dersi projesi test sayfasıdır)');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

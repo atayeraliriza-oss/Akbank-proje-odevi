@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akbank - Geleceği Birlikte Tasarlıyoruz</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="top-warning">
+        Bu site Web Tasarım dersi kapsamında yapılmıştır ve sitedeki bilgilerin geçerliliği yoktur.
+    </div>
+
+    <header>
+        <div class="header-left">
+            <div class="logo">AKBANK</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="krediler.html">Krediler</a></li>
+                    <li><a href="kredi-kartlari.html">Kredi Kartları</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="header-right">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Arama yapın...">
+                <button type="button" id="searchBtn">Ara</button>
+            </div>
+            <div id="authButtons" style="display: flex; gap: 10px;">
+                <a href="#" class="auth-btn login-btn">Giriş Yap</a>
+                <a href="#" class="auth-btn register-btn">Üye Ol</a>
+            </div>
+            <div id="userProfile" style="display: none; align-items: center; gap: 15px;">
+                <span style="color: var(--akbank-red); font-weight: 500;" id="userDisplayName"></span>
+                <button id="logoutBtn" class="auth-btn" style="background: #E30A17; border-color: #E30A17; cursor: pointer; color: white;">Çıkış</button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-slider-container">
+        <div class="hero-slider-track" id="heroSliderTrack">
+            <div class="hero-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/slider1.jpeg') center/cover no-repeat;">
+                <div class="hero-content">
+                    <h1>Geleceğin Bankacılığı Akbank'ta</h1>
+                    <p>Yenilikçi finansal çözümlerimiz, gelişmiş yapay zekâ destekli altyapımız ve uzman kadromuzla hayatınızı kolaylaştırıyor, geleceği bugünden birlikte tasarlıyoruz.</p>
+                    <a href="hakkimizda.html" class="btn">Keşfetmeye Başla &rarr;</a>
+                </div>
+            </div>
+            <div class="hero-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/slider2.jpeg') center/cover no-repeat;">
+                <div class="hero-content">
+                    <h1>Yeni Müşterilere %0 Faiz!</h1>
+                    <p>Hemen Akbanklı olun, 6 ay vadeli sıfır faizli nakit avansınızı saniyeler içinde kullanmaya başlayın.</p>
+                    <a href="kampanyalar.html" class="btn">Fırsatı Yakala &rarr;</a>
+                </div>
+            </div>
+            <div class="hero-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/slider3.jpeg') center/cover no-repeat;">
+                <div class="hero-content">
+                    <h1>Axess ile Alışverişin Keyfi</h1>
+                    <p>Yüz binlerce üye iş yerinde taksit imkanı ve anında chip-para kazandıran ayrıcalıklar sizi bekliyor.</p>
+                    <a href="kredi-kartlari.html#axess-kart" class="btn">Hemen Başvur &rarr;</a>
+                </div>
+            </div>
+        </div>
+        
+        <a class="prev-btn" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next-btn" onclick="changeSlide(1)">&#10095;</a>
+        
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <section style="background: var(--akbank-dark); color: var(--white); padding: 15px 20px;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; font-size: 14px; gap: 15px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: #A0A0A0;">USD</span> 
+                <strong style="color: #25D366;">33.45</strong>
+                <span style="font-size: 10px; color: #25D366;">▲ %0.12</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: #A0A0A0;">EUR</span> 
+                <strong style="color: #25D366;">36.12</strong>
+                <span style="font-size: 10px; color: #25D366;">▲ %0.45</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: #A0A0A0;">ALTIN (Gr)</span> 
+                <strong style="color: #ff4d4d;">2.450</strong>
+                <span style="font-size: 10px; color: #ff4d4d;">▼ %0.21</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: #A0A0A0;">BIST 100</span> 
+                <strong style="color: #25D366;">10.250</strong>
+                <span style="font-size: 10px; color: #25D366;">▲ %1.05</span>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 40px 20px; max-width: 1000px; margin: -30px auto 40px auto; position: relative; z-index: 10;">
+        <div style="background: #fff; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); display: flex; justify-content: space-around; padding: 30px 20px; flex-wrap: wrap; gap: 20px;">
+            <a href="krediler.html" style="text-decoration: none; color: var(--akbank-dark); text-align: center; flex: 1; min-width: 120px; transition: transform 0.3s ease;">
+                <div style="width: 60px; height: 60px; background: #F5F7FA; border-radius: 50%; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--akbank-red);">💰</div>
+                <h4 style="font-size: 14px;">Kredi Başvurusu</h4>
+            </a>
+            <a href="kredi-kartlari.html" style="text-decoration: none; color: var(--akbank-dark); text-align: center; flex: 1; min-width: 120px; transition: transform 0.3s ease;">
+                <div style="width: 60px; height: 60px; background: #F5F7FA; border-radius: 50%; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--akbank-red);">💳</div>
+                <h4 style="font-size: 14px;">Kart Başvurusu</h4>
+            </a>
+            <a href="kampanyalar.html" style="text-decoration: none; color: var(--akbank-dark); text-align: center; flex: 1; min-width: 120px; transition: transform 0.3s ease;">
+                <div style="width: 60px; height: 60px; background: #F5F7FA; border-radius: 50%; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--akbank-red);">🎉</div>
+                <h4 style="font-size: 14px;">Kampanyalar</h4>
+            </a>
+            <a href="para-transferi.html" style="text-decoration: none; color: var(--akbank-dark); text-align: center; flex: 1; min-width: 120px; transition: transform 0.3s ease;">
+                <div style="width: 60px; height: 60px; background: #F5F7FA; border-radius: 50%; margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--akbank-red);">🔄</div>
+                <h4 style="font-size: 14px;">Para Transferi</h4>
+            </a>
+        </div>
+    </section>
+
+    <section style="padding: 20px 20px 60px 20px; background: var(--light-bg); text-align: center;">
+        <div style="display: flex; justify-content: space-around; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 30px;">
+            <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: var(--shadow); flex: 1; min-width: 200px;">
+                <h2 style="color: var(--akbank-red); font-size: 36px;">18 Milyon+</h2>
+                <p style="color: var(--akbank-gray); font-weight: 500; margin-top: 10px;">Aktif Müşteri</p>
+            </div>
+            <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: var(--shadow); flex: 1; min-width: 200px;">
+                <h2 style="color: var(--akbank-red); font-size: 36px;">700+</h2>
+                <p style="color: var(--akbank-gray); font-weight: 500; margin-top: 10px;">Yaygın Şube Ağı</p>
+            </div>
+            <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: var(--shadow); flex: 1; min-width: 200px;">
+                <h2 style="color: var(--akbank-red); font-size: 36px;">5.000+</h2>
+                <p style="color: var(--akbank-gray); font-weight: 500; margin-top: 10px;">Yenilikçi ATM</p>
+            </div>
+            <div style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: var(--shadow); flex: 1; min-width: 200px;">
+                <h2 style="color: var(--akbank-red); font-size: 36px;">12.000+</h2>
+                <p style="color: var(--akbank-gray); font-weight: 500; margin-top: 10px;">Uzman Çalışan</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" style="padding-top: 20px;">
+        <h2>Ayrıcalıklı Finansal Hizmetlerimiz</h2>
+        <p class="subtitle">Bireysel ve kurumsal tüm finansal ihtiyaçlarınız için her an yanınızdayız.</p>
+        <div class="service-cards">
+            <div class="card">
+                <h3>Bireysel Bankacılık</h3>
+                <p>İhtiyaç kredilerinden vadeli hesaplara, bütçenize en uygun çözümlerle birikimlerinizi güvenle büyütmenizi ve harcamalarınızı kolayca yönetmenizi sağlıyoruz.</p>
+            </div>
+            <div class="card">
+                <h3>Dijital Bankacılık</h3>
+                <p>Akbank Mobil ve İnternet şubesi sayesinde şubeye gitmenize gerek kalmadan, 7/24 tüm para transferi, fatura ödeme ve yatırım işlemlerinizi anında gerçekleştirebilirsiniz.</p>
+            </div>
+            <div class="card">
+                <h3>Kobi & Ticari Bankacılık</h3>
+                <p>İşletmenizi büyütmek, dış ticaret süreçlerinizi hızlandırmak ve nakit akışınızı optimize etmek için ticari krediler ve esnek POS çözümleri sunuyoruz.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 60px 20px; background: #fff; max-width: 1200px; margin: 0 auto; border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 60px;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 50px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px; text-align: center;">
+                <div style="font-size: 80px; margin-bottom: 20px;">📱</div>
+            </div>
+            <div style="flex: 2; min-width: 300px;">
+                <h2 style="color: var(--akbank-dark); font-size: 32px; margin-bottom: 15px;">Şube Cebinizde: Akbank Mobil</h2>
+                <p style="color: var(--akbank-gray); font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                    Yüz tanıma ile saniyeler içinde giriş yapın, para transferlerinden yatırım işlemlerine kadar yüzlerce bankacılık hizmetini tek dokunuşla halledin. Akbank Mobil ile kontrol tamamen sizde.
+                </p>
+                <div style="display: flex; gap: 15px;">
+                    <button class="btn" style="background: var(--akbank-dark); color: var(--white); border-color: var(--akbank-dark); padding: 12px 25px;">App Store'dan İndir</button>
+                    <button class="btn" style="background: var(--akbank-dark); color: var(--white); border-color: var(--akbank-dark); padding: 12px 25px;">Google Play'den İndir</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 0 20px;">
+        <a href="kampanyalar.html" class="interactive-campaign-banner">
+            <h2>🎉 Size Özel Fırsatları Keşfedin!</h2>
+            <p>Sıfır faizli krediler, bol chip-para kazandıran alışverişler ve daha fazlası...</p>
+            <span class="action-text">Tüm Kampanyaları Gör &rarr;</span>
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>AKBANK</h4>
+                <p>Türkiye'nin öncü ve en yenilikçi kurumsal bankası.</p>
+            </div>
+            <div class="footer-col">
+                <h4>HIZLI LİNKLER</h4>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>İLETİŞİM</h4>
+                <p>📞 444 25 25</p>
+                <p>✉️ iletisim@akbank.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Akbank. Tüm hakları saklıdır.
+        </div>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeLogin">&times;</span>
+            <h2 style="color: var(--akbank-red); margin-bottom: 20px;">Akbank'a Giriş</h2>
+            <form id="loginForm" class="modal-form">
+                <div class="form-group">                    <label>Ad Soyad</label>
+                    <input type="text" id="loginName" required placeholder="Adınız Soyadınız">
+                </div>
+                <div class="form-group">                    <label>T.C. Kimlik No</label>
+                    <input type="text" id="loginId" required placeholder="11 Haneli Kimlik Numaranız">
+                </div>
+                <div class="form-group">
+                    <label>Akbank Şifresi</label>
+                    <input type="password" id="loginPass" required placeholder="Şifreniz">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Güvenli Giriş</button>
+                <p id="loginFeedback" class="feedback-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeRegister">&times;</span>
+            <h2 style="color: var(--akbank-red); margin-bottom: 20px;">Akbanklı Ol</h2>
+            <form id="registerForm" class="modal-form">
+                <div class="form-group">
+                    <label>Ad Soyad</label>
+                    <input type="text" id="regName" required placeholder="Adınız Soyadınız">
+                </div>
+                <div class="form-group">
+                    <label>T.C. Kimlik No</label>
+                    <input type="text" id="regTc" required placeholder="11 Haneli TCKN">
+                </div>
+                <div class="form-group">
+                    <label>Cep Telefonu</label>
+                    <input type="tel" id="regPhone" required placeholder="05XX XXX XX XX">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Hemen Başvur</button>
+                <p id="regFeedback" class="feedback-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

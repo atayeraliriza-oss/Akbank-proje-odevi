@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kampanyalar - Akbank</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .filter-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .filter-btn {
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid #CCC;
+            background: #fff;
+            color: var(--akbank-gray);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--akbank-red);
+            color: #fff;
+            border-color: var(--akbank-red);
+        }
+        .campaign-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+        .campaign-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .badge-urgent {
+            display: inline-block;
+            background: #FFECEC;
+            color: var(--akbank-red);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .badge-category {
+            background: #2B2B2B;
+            color: #fff;
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .personalized-banner {
+            background: linear-gradient(135deg, var(--akbank-dark), #333);
+            color: var(--white);
+            padding: 40px 20px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-warning">
+        Bu site Web Tasarım dersi kapsamında yapılmıştır ve sitedeki bilgilerin geçerliliği yoktur.
+    </div>
+
+    <header>
+        <div class="header-left">
+            <div class="logo">AKBANK</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="krediler.html">Krediler</a></li>
+                    <li><a href="kredi-kartlari.html">Kredi Kartları</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Arama yapın...">
+                <button type="button" id="searchBtn">Ara</button>
+            </div>
+            <div id="authButtons" style="display: flex; gap: 10px;">
+                <a href="#" class="auth-btn login-btn">Giriş Yap</a>
+                <a href="#" class="auth-btn register-btn">Üye Ol</a>
+            </div>
+            <div id="userProfile" style="display: none; align-items: center; gap: 15px;">
+                <span style="color: var(--akbank-red); font-weight: 500;" id="userDisplayName"></span>
+                <button id="logoutBtn" class="auth-btn" style="background: #E30A17; border-color: #E30A17; cursor: pointer; color: white;">Çıkış</button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" style="padding: 80px 50px;">
+        <div class="hero-content">
+            <h1>Güncel Kampanyalar ve Fırsatlar</h1>
+            <p>Sadece size özel hazırlanan ayrıcalıklı teklifleri kaçırmayın, Akbanklı olmanın avantajlarını doya doya yaşayın.</p>
+        </div>
+    </section>
+
+    <section style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+        
+        <div class="filter-container">
+            <button class="filter-btn active">Tüm Kampanyalar</button>
+            <button class="filter-btn">Kart Kampanyaları</button>
+            <button class="filter-btn">Kredi Fırsatları</button>
+            <button class="filter-btn">Yatırım</button>
+            <button class="filter-btn">Seyahat</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            
+            <div class="campaign-card">
+                <span style="position: absolute; top: 15px; right: -30px; background: var(--akbank-red); color: white; padding: 5px 40px; transform: rotate(45deg); font-size: 12px; font-weight: bold;">YENİ</span>
+                <div>
+                    <span class="badge-category">KREDİ</span>
+                    <span class="badge-urgent">⏱️ Kısa Süreli Fırsat</span>
+                    <h3 style="color: var(--akbank-dark); margin-bottom: 15px; font-size: 22px;">Akbanklı Olanlara %0 Faiz!</h3>
+                    <p style="color: var(--akbank-gray); font-size: 15px; line-height: 1.6; margin-bottom: 20px;">Mobil üzerinden ilk defa Akbank müşterisi olan herkese masrafsız, 6 ay vadeli ve %0 faizli nakit avans fırsatı sunulmaktadır.</p>
+                </div>
+                <a href="krediler.html#ihtiyac-kredisi" class="btn" style="padding: 10px 20px; font-size: 14px; text-align: center;">Hemen Başvur</a>
+            </div>
+            
+            <div class="campaign-card">
+                <div>
+                    <span class="badge-category">KART KAMPANYASI</span>
+                    <span class="badge-urgent">⏳ Son 3 Gün</span>
+                    <h3 style="color: var(--akbank-dark); margin-bottom: 15px; font-size: 22px;">Axess ile 500 TL Chip-Para</h3>
+                    <p style="color: var(--akbank-gray); font-size: 15px; line-height: 1.6; margin-bottom: 20px;">Bu aya özel yapacağınız her 1.000 TL ve üzeri market alışverişinizde toplamda 500 TL'ye varan chip-para kazanma şansını kaçırmayın.</p>
+                </div>
+                <a href="kredi-kartlari.html#axess-kart" class="btn" style="padding: 10px 20px; font-size: 14px; text-align: center;">Kampanyaya Katıl</a>
+            </div>
+
+            <div class="campaign-card">
+                <div>
+                    <span class="badge-category">SEYAHAT</span>
+                    <h3 style="color: var(--akbank-dark); margin-bottom: 15px; font-size: 22px;">Wings'ten Çift Mil Fırsatı</h3>
+                    <p style="color: var(--akbank-gray); font-size: 15px; line-height: 1.6; margin-bottom: 20px;">Yaz tatili planlarınız için yurt dışı uçak biletlerinizi Wings ile alın, harcamalarınızdan 2 kat daha fazla mil kazanın. Lounge ayrıcalıklarını hemen keşfedin.</p>
+                </div>
+                <a href="kredi-kartlari.html#wings-kart" class="btn" style="padding: 10px 20px; font-size: 14px; text-align: center;">Detaylı Bilgi</a>
+            </div>
+
+            <div class="campaign-card">
+                <div>
+                    <span class="badge-category">YATIRIM</span>
+                    <span class="badge-urgent">🌟 Müşterilere Özel</span>
+                    <h3 style="color: var(--akbank-dark); margin-bottom: 15px; font-size: 22px;">Vadeli Mevduatta Avantaj</h3>
+                    <p style="color: var(--akbank-gray); font-size: 15px; line-height: 1.6; margin-bottom: 20px;">Birikimlerinizi Akbank'ta değerlendirin, dijital kanallardan açacağınız 32 günlük e-Vadeli hesaplara özel ek faiz oranlarından anında yararlanın.</p>
+                </div>
+                <a href="index.html" class="btn" style="padding: 10px 20px; font-size: 14px; text-align: center;">Ana Sayfaya Dön</a>
+            </div>
+
+        </div>
+
+        <div class="personalized-banner">
+            <div style="font-size: 40px;">🎁</div>
+            <h2 style="font-size: 28px;">Size Özel Fırsatları Görmek İster Misiniz?</h2>
+            <p style="font-size: 16px; opacity: 0.9; max-width: 600px;">T.C. Kimlik numaranız ile sisteme giriş yaparak, harcama alışkanlıklarınıza ve finansal profilinize en uygun, tamamen size özel tanımlanmış kampanyaları keşfedebilirsiniz.</p>
+            <a href="#" class="btn login-btn" style="background: var(--akbank-red); color: var(--white); border-color: var(--akbank-red); padding: 12px 30px; font-size: 16px;">Hemen Giriş Yap</a>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>AKBANK</h4>
+                <p>Türkiye'nin öncü ve en yenilikçi kurumsal bankası.</p>
+            </div>
+            <div class="footer-col">
+                <h4>HIZLI LİNKLER</h4>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>İLETİŞİM</h4>
+                <p>📞 444 25 25</p>
+                <p>✉️ iletisim@akbank.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Akbank. Tüm hakları saklıdır.
+        </div>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeLogin">&times;</span>
+            <h2 style="color: var(--akbank-red); margin-bottom: 20px;">Akbank'a Giriş</h2>
+            <form id="loginForm" class="modal-form">
+                <div class="form-group">                    <label>Ad Soyad</label>
+                    <input type="text" id="loginName" required placeholder="Adınız Soyadınız">
+                </div>
+                <div class="form-group">                    <label>T.C. Kimlik No</label>
+                    <input type="text" id="loginId" required placeholder="11 Haneli Kimlik Numaranız">
+                </div>
+                <div class="form-group">
+                    <label>Akbank Şifresi</label>
+                    <input type="password" id="loginPass" required placeholder="Şifreniz">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Güvenli Giriş</button>
+                <p id="loginFeedback" class="feedback-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeRegister">&times;</span>
+            <h2 style="color: var(--akbank-red); margin-bottom: 20px;">Akbanklı Ol</h2>
+            <form id="registerForm" class="modal-form">
+                <div class="form-group">
+                    <label>Ad Soyad</label>
+                    <input type="text" id="regName" required placeholder="Adınız Soyadınız">
+                </div>
+                <div class="form-group">
+                    <label>T.C. Kimlik No</label>
+                    <input type="text" id="regTc" required placeholder="11 Haneli TCKN">
+                </div>
+                <div class="form-group">
+                    <label>Cep Telefonu</label>
+                    <input type="tel" id="regPhone" required placeholder="05XX XXX XX XX">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Hemen Başvur</button>
+                <p id="regFeedback" class="feedback-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
